@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <table
+      class="table table-dark"
+      id="table"
+      style="width: 50%; margin-left:20%"
+    >
+      <thead>
+        <tr>
+          <th>Страна</th>
+          <th>Население</th>
+          <th>Бюджет</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <!-- <td>
+            <div class="input-group ">
+              <div class="input-group-prepend"></div>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Username"
+                disabled
+              />
+            </div>
+          </td>
+          <td>
+            <div class="input-group ">
+              <div class="input-group-prepend"></div>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Username"
+                disabled
+              />
+            </div>
+          </td>
+          <td>
+            <div class="input-group ">
+              <div class="input-group-prepend"></div>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Username"
+                disabled
+              />
+            </div>
+          </td> -->
+        </tr>
+        <tr id="content"></tr>
+      </tbody>
+    </table>
+    <input type="file" style="padding-left:20%; padding-right:20%;" />
+    <button class="btn btn-primary" onclick="GetAllData()">
+      Считать данные
+    </button>
+    <button class="btn btn-primary" onclick="GetOneForm()">
+      Добавить поле
+    </button>
+    <button class="btn btn-primary" onclick="SortFromFile()">
+      Сортировка данных из файла
+    </button>
+    <script src="index.js"></script>
+  </body>
+</html>
