@@ -20,9 +20,9 @@
     >
       <thead>
         <tr>
-          <th>Страна</th>
-          <th>Население</th>
-          <th>Бюджет</th>
+          <th onclick="sortbyCountry()">Страна</th>
+          <th onclick="sortbyPeople()">Население</th>
+          <th onclick="sortbyMoney()">Бюджет</th>
         </tr>
       </thead>
       <tbody>
@@ -71,8 +71,11 @@
     <button class="btn btn-primary" onclick="GetOneForm()">
       Добавить поле
     </button>
-    <button class="btn btn-primary" onclick="SortFromFile()">
-      Сортировка данных из файла
+    <button class="btn btn-primary" onclick="SortFromFileMerge()">
+      Сортировка данных из файла(слиянием)
+    </button>
+    <button class="btn btn-primary" onclick="SortFromFileShake()">
+      Сортировка данных из файла(шейкерная)
     </button>
     <script src="index.js"></script>
   </body>
