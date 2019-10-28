@@ -71,12 +71,20 @@
     <button class="btn btn-primary" onclick="GetOneForm()">
       Добавить поле
     </button>
-    <button class="btn btn-primary" onclick="SortFromFileMerge()">
+  </br>
+    <button class="btn btn-primary" onclick="SortFromFileMerge()" style="margin-left:15%;">
       Сортировка данных из файла(слиянием)
     </button>
-    <button class="btn btn-primary" onclick="SortFromFileShake()">
+    <button class="btn btn-primary" onclick="SortFromFileShake()" >
       Сортировка данных из файла(шейкерная)
     </button>
+    <button class="btn btn-primary" onclick="Search(),console.log(Search(4, lines))">
+      Поиск по условиям
+    </button>
+  </br>
+    <span style="margin-left:15%;">Введите два числа/названия Государств</span></br>
+    <input type="text" style="margin-left:15%;margin-top:2%;" onchange="first=this.value"/></br>
+    <input type="text" style="margin-left:15%;margin-top:2%;" onchange="second=this.value"/></br>
     <script src="index.js"></script>
   </body>
 </html>
