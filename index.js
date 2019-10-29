@@ -99,7 +99,8 @@ function GetOneForm() {
   // else {
   //   lines.push([, ,])
   // }
-  console.log(lines)
+  console.log(forI, "ii")
+  console.log(lines, "104")
   let td = doc.createElement("td")
   td.setAttribute("id", "td")
   let table = doc.getElementById("table")
@@ -107,7 +108,10 @@ function GetOneForm() {
   tr.setAttribute("class", "tr")
   table.appendChild(tr)
   tr.appendChild(td)
-  tr.innerHTML = `
+  if (forI == 0) {
+    lines.push([, ,])
+    console.log(lines, "113")
+    tr.innerHTML = `
     <td><div class="input-group ">
           <div class="input-group-prepend"></div>
           <input
@@ -115,6 +119,7 @@ function GetOneForm() {
             class="form-control Country"
             placeholder="Страна"
             
+            onchange="lines[0][0]=this.value"
           />
         </div></td>
         <td><div class="input-group ">
@@ -124,6 +129,7 @@ function GetOneForm() {
             class="form-control People"
             placeholder="Население"
             
+            onchange="lines[0][1]=this.value"
           />
         </div></td>
         <td><div class="input-group ">
@@ -133,8 +139,52 @@ function GetOneForm() {
             class="form-control Money"
             placeholder="Бюджет"
             
+            onchange="lines[0][2]=this.value"
           />
         </div></td>`
+    // lines.push([, ,])
+  }
+  if (forI > 0) {
+    tr.innerHTML = `
+    <td><div class="input-group ">
+          <div class="input-group-prepend"></div>
+          <input
+            type="text"
+            class="form-control Country"
+            placeholder="Страна"
+            
+            onchange="lines[forI-1][0]=(this.value)"
+          />
+        </div></td>
+        <td><div class="input-group ">
+          <div class="input-group-prepend"></div>
+          <input
+            type="number"
+            class="form-control People"
+            placeholder="Население"
+            
+            onchange="lines[forI-1][1]=(this.value)"
+          />
+        </div></td>
+        <td><div class="input-group ">
+          <div class="input-group-prepend"></div>
+          <input
+            type="number"
+            class="form-control Money"
+            placeholder="Бюджет"
+            
+            onchange="lines[forI-1][2]=(this.value)"
+          />
+        </div></td>`
+  }
+
+  if (forI > 0) {
+    lines.push([, ,])
+    console.log(lines, "183")
+  }
+  forI++
+
+  console.log(forI, "iiii")
 }
 
 let swap = 0
@@ -272,14 +322,15 @@ function Search(fs, ss)       // t - искомый элемент,
   let resultat
   A = lines
   console.log(A.length)        // A - упорядоченный массив, в котором ищем.
-  var i = 0, j = A.length, k, forA;
-  while (i < j) {
-    k = Math.floor((i + j) / 2);
+  var leftBoard = 0, rightBoard = A.length - 1, k, forA;
+  while (leftBoard < rightBoard) {
+    k = Math.floor((leftBoard + rightBoard) / 2);
     if (fs >= A[k][ind] && ss <= A[k][ind]) return resultat = A[k][ind];
-    else i = k + 1;
+    if (fs >= A[k][ind]) leftBoard = k + 1;
+    if (ss <= A[k][ind]) rightBoard = k - 1;
   }
 
-  if (A[i][ind] === t && i == j) return i;    // На выходе индекс искомого элемента.
+  if ((A[leftBoard][ind] >= fs || A[leftBoard][ind] <= ss) && leftBoard == rightBoard) return i;    // На выходе индекс искомого элемента.
   else return -1;                 // Если искомого элемента нет в массиве, то -1.
 }
 
