@@ -1,7 +1,7 @@
 const doc = document
 let ind
-let first
-let second
+let first = 0
+let second = 0
 let lines = []
 let forCountry = forMoney = forPeople = forI = 0
 const input = doc.querySelector('input[type="file"]')
@@ -317,22 +317,68 @@ function SortFromFileShake() {
 
 function Search(fs, ss)       // t - искомый элемент,
 {
-  fs = first
-  ss = second
-  let resultat
-  A = lines
-  console.log(A.length)        // A - упорядоченный массив, в котором ищем.
-  var leftBoard = 0, rightBoard = A.length - 1, k, forA;
-  while (leftBoard < rightBoard) {
-    k = Math.floor((leftBoard + rightBoard) / 2);
-    if (fs >= A[k][ind] && ss <= A[k][ind]) return resultat = A[k][ind];
-    if (fs >= A[k][ind]) leftBoard = k + 1;
-    if (ss <= A[k][ind]) rightBoard = k - 1;
-  }
+  if (fs == 0 || ss == 0) {
+    alert('Введите начало и конец диапазона')
 
-  if ((A[leftBoard][ind] >= fs || A[leftBoard][ind] <= ss) && leftBoard == rightBoard) return i;    // На выходе индекс искомого элемента.
+    return
+  }
+  // console.log("ERROE")
+  // fs = first
+  // ss = second
+  // let resultat
+  // A = lines
+  // console.log(A.length)        // A - упорядоченный массив, в котором ищем.
+  // var leftBoard = 0, rightBoard = A.length - 1, k, forA;
+  // while (leftBoard < rightBoard) {
+  //   k = Math.floor((leftBoard + rightBoard) / 2);
+  //   if (fs >= A[k][ind] && ss <= A[k][ind]) return resultat = A[k][ind];
+  //   if (fs >= A[k][ind]) leftBoard = k + 1;
+  //   if (ss <= A[k][ind]) rightBoard = k;
+  //   console.log("+++++")
+  // }
+
+  // if ((A[leftBoard][ind] >= fs || A[leftBoard][ind] <= ss) && leftBoard == rightBoard) return i;    // На выходе индекс искомого элемента.
+  // else return -1;                 // Если искомого элемента нет в массиве, то -1.
+  A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+  t = 4
+  let i = 0, j = A.length - 1, k;
+
+  while (i < j) {
+    console.log('Zashol')
+    k = Math.floor((i + j) / 2);
+    if (A[k] >= fs && A[k] <= ss) {
+      console.log(k, "RETURN")
+      return i
+    }
+    else if (A[k] > ss) {
+      j = k
+      console.log('j')
+    }
+    else if (A[k] < fs) {
+      console.log('i')
+      i = k + 1
+    }
+    // if (t <= A[k]) j = k;
+    // else i = k + 1;
+    // k = Math.floor((i + j) / 2);
+    // if (fs <= A[k]) j = k;
+    // else i = k + 1;
+    // if (ss >= A[k]) j = k + 1
+    // else j = k
+
+    // if (A[i] >= fs && A[i] <= ss) {
+    //   console.log('return')
+    //   return i
+    // }
+    // else if (A[i] >= ss) {
+    //   console.log('i=k+1')
+    //   i = k + 1
+    // }
+    // else if (A[i] <= fs) {
+    //   console.log('j=k')
+    //   j = k
+    // }
+  }
+  if (A[i] >= fs && A[i] <= ss) return i;     // На выходе индекс искомого элемента.
   else return -1;                 // Если искомого элемента нет в массиве, то -1.
 }
-
-// if (lines.length > 0)
-//   console.log(Search(1, lines))
